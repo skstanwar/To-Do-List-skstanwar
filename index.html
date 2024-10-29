@@ -12,6 +12,44 @@
         rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
+         #overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgb(70 70 70 / 91%); /* Semi-transparent background */
+            display: none; /* Initially hidden */
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        /* Style for the popup message box */
+        #popup {
+            background: #000000; /* White background */
+            padding: 20px;
+            color: chartreuse;
+            border-radius: 10px;
+            width: 22vw;
+            box-shadow:-17px 20px 20px 20px rgba(0, 0, 0, 0.3); /* Soft shadow */
+            text-align: center;
+            position: relative;
+        }
+         /* Style for the close button */
+         .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: #ff5e5e;
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            width: 25px;
+            height: 25px;
+            cursor: pointer;
+            font-weight: bold;
+        }
         /* Styling Enhancements */
 
         body {
@@ -175,7 +213,14 @@
     <header>
         <h1>To-Do List</h1>
     </header>
-
+     <!-- Overlay and Popup Message -->
+     <div id="overlay">
+        <div id="popup">
+            <button class="close-btn" onclick="closePopup()">×</button>
+            <h2>Welcome To-Do-List!</h2>
+            <p>Welcome to our To-Do website! We're excited to help you stay organized and achieve your goals. Start adding tasks, set priorities, and enjoy a smoother, more productive journey with us!!</p>
+        </div>
+    </div>
     <div class="container mt-4">
         <h4>Task Completion Progress</h4>
         <div class="progress">
@@ -364,6 +409,14 @@
                 modal.style.display = "none";
             }
         });
+        window.onload = function() {
+            document.getElementById('overlay').style.display = 'flex';
+        };
+
+        // Function to close the popup
+        function closePopup() {
+            document.getElementById('overlay').style.display = 'none';
+        }
     </script>
 </body>
 
